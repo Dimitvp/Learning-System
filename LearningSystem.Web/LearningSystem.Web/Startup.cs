@@ -1,13 +1,15 @@
 ﻿namespace LearningSystem.Web
 {
+    using AutoMapper;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using LearningSystem.Data;
-    using LearningSystem.Data.Models;
+    using Data;
+    using Data.Models;
+    using Infrastructure.Extensions;
 
     public class Startup
     {
@@ -29,6 +31,7 @@
                 .AddDefaultTokenProviders();
 
             // Add application services.
+            services.AddAutoMapper();
 
             services.AddMvc();
         }
@@ -36,6 +39,8 @@
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseDatabaseMigration();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
