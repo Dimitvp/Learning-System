@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LearningSystem.Common\LearningSystem.Common.csproj" />
     <ProjectReference Include="..\LearningSystem.Data\LearningSystem.Data.csproj" />
   </ItemGroup>
 

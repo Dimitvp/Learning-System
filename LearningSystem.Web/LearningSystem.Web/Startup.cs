@@ -10,6 +10,7 @@
     using Data;
     using Data.Models;
     using Infrastructure.Extensions;
+    using Microsoft.AspNetCore.Mvc;
 
     public class Startup
     {
@@ -41,7 +42,10 @@
 
             services.AddDomainServices();
 
-            services.AddMvc();
+            services.AddMvc(option =>
+            {
+                option.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
